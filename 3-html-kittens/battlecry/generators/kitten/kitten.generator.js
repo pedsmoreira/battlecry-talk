@@ -1,16 +1,27 @@
-import { Generator } from 'battlecry';
+import { Generator, namedCasex } from 'battlecry';
 
 export default class KittenGenerator extends Generator {
   config = {
-    generate: {
+    add: {
       args: 'name',
       options: {
-        reversed: { description: 'Add the name reversed' }
+        picture: { description: 'Picture number' }
       }
     }
   };
 
-  generate() {
-    this.templates().forEach(file => file.saveAs(`it-worked/kittens/`, this.args.name));
+  get image() {
+    return Math.round(Math.random() * 4) + 1;
+  }
+
+  add() {
+    const newContent = namedCasex(
+      this.template().replaceText('@image', this.image).text,
+      this.args.name
+    );
+
+    this.file('index.html')
+      .after('class="kittens"', newContent)
+      .save();
   }
 }
