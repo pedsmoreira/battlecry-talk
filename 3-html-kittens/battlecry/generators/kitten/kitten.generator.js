@@ -4,6 +4,7 @@ export default class KittenGenerator extends Generator {
   config = {
     add: {
       args: 'name',
+      description: 'Add a cool kitten picture',
       options: {
         picture: { description: 'Picture number' }
       }

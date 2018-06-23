@@ -2,5 +2,4 @@ Send a @color basket with @stripe stripes to __Na Me__ with the fruits:
 
 - 1 banana
 - 3 oranges
-- 6 potatos
 - 8 apples
