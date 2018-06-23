@@ -1,4 +1,4 @@
-import { Generator, namedCasex } from 'battlecry';
+import { Generator } from 'battlecry';
 
 export default class KittenGenerator extends Generator {
   config = {
@@ -15,13 +15,10 @@ export default class KittenGenerator extends Generator {
   }
 
   add() {
-    const newContent = namedCasex(
-      this.template().replaceText('@image', this.image).text,
-      this.args.name
-    );
+    const template = this.template().replaceText('@image', this.image);
 
     this.file('index.html')
-      .after('class="kittens"', newContent)
+      .after('class="kittens"', template.text, this.args.name)
       .save();
   }
 }

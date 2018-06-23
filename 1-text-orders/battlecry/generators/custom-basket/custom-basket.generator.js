@@ -11,7 +11,7 @@ export default class CustomBasketGenerator extends Generator {
   }
 
   get fruits() {
-    return this.args.fruits.length ? this.args.fruits : DEFAULT_FRUITS;
+    return this.args.fruits || DEFAULT_FRUITS;
   }
 
   order() {
