@@ -3,7 +3,7 @@ import { Generator } from "battlecry";
 export default class ColorfulBasketGenerator extends Generator {
   config = {
     order: {
-      args: "name",
+      args: "customer",
       description: "Order a colorful basket with fruits",
       options: {
         color: { description: "Basket color", arg: "required" },
@@ -24,6 +24,6 @@ export default class ColorfulBasketGenerator extends Generator {
     this.template()
       .replaceText("@color", this.color)
       .replaceText("@stripe", this.stripeColor)
-      .saveAs(`orders/`, this.args.name);
+      .saveAs(`orders/`, this.args.customer);
   }
 }

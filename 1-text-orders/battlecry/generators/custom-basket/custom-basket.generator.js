@@ -5,7 +5,7 @@ const DEFAULT_FRUITS = ['banana', 'apple', 'orange'];
 export default class CustomBasketGenerator extends Generator {
   config = {
     order: {
-      args: 'name ...fruits?',
+      args: 'customer ...fruits?',
       description: 'Order a basket with chosen fruits'
     }
   }
@@ -18,11 +18,10 @@ export default class CustomBasketGenerator extends Generator {
     const file = this.template();
     
     this.fruits.forEach(fruit => {
-      const amount = Math.round(Math.random() * 2);
-      const name = `_name_${amount > 1 ? 's' : ''}`;
-      file.append(`- ${amount} ${name}`, fruit);
+      const amount = Math.round(Math.random() * 10) + 2;
+      file.append(`- ${amount} _na me_s`, fruit);
     });
 
-    file.saveAs(`orders/`, this.args.name);
+    file.saveAs(`orders/`, this.args.customer);
   }
 }
